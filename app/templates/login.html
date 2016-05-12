@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% block title %}
+    登陆
+{% endblock %}
+
+{% block content %}
+    {% if info %}
+        <div id="myAlert" class="alert alert-success">
+            <a href="#" class="close" data-dismiss="alert">&times;</a>
+            <div class="container row">
+                <div class="text-center">
+                    <strong class="h3">{{ info }}</strong>
+                </div>
+            </div>
+        </div>
+
+    {% else %}
+
+    <!--id=registerForm 这里登陆表单的验证与注册表单验证相同，使用同一个表单名字-->
+    <form id="registerForm" method="post" class="form-horizontal" action="../login/">
+    {% csrf_token %}
+        <div class="form-group">
+            <label class="col-md-3 control-label">用户名</label>
+            <div class="col-md-5">
+                <input type="text" class="form-control" name="username"  title="username"/>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-md-3 control-label">密码</label>
+            <div class="col-md-5">
+                <input type="password" class="form-control" name="password"  title="password"/>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-5 col-md-offset-3">
+                <button type="submit" class="btn btn-primary">Login</button>
+            </div>
+        </div>
+    </form>
+
+    {% endif %}
+
+{% endblock %}

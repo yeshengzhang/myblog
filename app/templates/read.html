@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block title %}
+    Read--me
+{% endblock %}
+{% block content %}
+    <div class="center">
+        <div class="blog-item">
+            <div class="row">
+                <div class="col-xs-12 col-sm-10 blog-content">
+                    <h2 class="text-center">{{ article_list.title }}</h2>
+                    <a href="#"><img class="img-responsive img-blog" src="../static/images/blog/blog1.jpg" width="100%  " alt="" /></a>
+                    <p>{{ article_list.body }}</p>
+                    <p>{{ article_list.author }}---{{ article_list.create_time }}</p>
+                </div>
+            </div>
+        </div><!--/.blog-item-->
+    </div>
+{% endblock %}

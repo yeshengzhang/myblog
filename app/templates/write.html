@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+{% block title %}
+    编写
+{% endblock %}
+{% block content %}
+    <div class="container">
+        <div class="col-lg-1 text-right">
+            <span class="glyphicon glyphicon-file"></span>
+        </div>
+        <div class="col-lg-4">
+            <input type="text" class="form-control" aria-label="标题" title="输入标题" id="title" placeholder="标题">
+        </div>
+        <div class="col-lg-2">
+            <input type="text" class="form-control" aria-label="作者" title="输入作者" id="author" placeholder="作者">
+        </div>
+    </div>
+    <hr>
+    <div class="click2edit"></div>
+
+    <button id="edit" class="btn btn-primary" onclick="edit()" type="button">启程</button>
+    <button id="save" class="btn btn-primary" onclick="save()" type="submit">保存</button>
+
+    <!--文本输入框-->
+    <script>
+        var edit = function() {
+            $('.click2edit').summernote({
+                focus: true,// set focus to editable area after initializing summernote
+                height:300,// set editor height
+                minHeight:null,// set minimum height of editor
+                maxHeight:null// set maximum height of editor
+            });
+        };
+
+        var save = function() {
+            var body = $('.click2edit').summernote('code');
+            var title = document.getElementById('title').value;
+            var author=document.getElementById('author').value;
+            $('.click2edit').summernote('destroy');
+            $.ajaxSetup({
+                data: {csrfmiddlewaretoken: '{{ csrf_token }}' }
+            });
+            $.post('../write/', {'body':body, 'title':title,  'author': author});
+        };
+
+    </script>
+
+
+{% endblock %}

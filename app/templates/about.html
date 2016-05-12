@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block title %}
+    个人简介
+{% endblock %}
+{% block main %}
+    <script type="text/javascript">
+        $(function () {
+            $('a.media').media({ width: 800, height: 1200 });
+        });
+    </script>
+
+    <form id="form1" runat="server" class="col-lg-offset-1  ">
+        <div id="main"><a class="media" href="../static/images/about.pdf" id="PDFFile"></a>
+        </div>
+    </form>
+{% endblock %}

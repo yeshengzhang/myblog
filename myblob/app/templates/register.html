@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+{% block title %}
+    注册
+{% endblock %}
+{% block content %}
+
+    <form id="registerForm" action="../register/" method="post" class="form-horizontal">
+        {% csrf_token %}
+        <div class="form-group">
+            <label class="col-md-3 control-label">用户名</label>
+            <div class="col-md-5">
+                <input type="text" class="form-control" name="username"  title="username"/>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-md-3 control-label">密码</label>
+            <div class="col-md-5">
+                <input type="password" class="form-control" name="password"  title="password"/>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-md-3 control-label">确认密码</label>
+            <div class="col-md-5">
+                <input type="password" class="form-control" name="password1"  title="password1"/>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-md-3 control-label">性别</label>
+            <div class="col-md-5">
+                {#                <input type="text" class="form-control" name="sex"  title="sex"/>#}
+                <label class="checkbox-inline">
+                    <input type="radio" name="sex" id="sex-m"
+                           value="m" checked> 男
+                </label>
+                <label class="checkbox-inline">
+                    <input type="radio" name="sex" id="sex-f"
+                           value="f"> 女
+                </label>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-5 col-md-offset-3">
+                <button type="submit" class="btn btn-primary">注册</button>
+            </div>
+        </div>
+    </form>
+
+{% endblock %}
